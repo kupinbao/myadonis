@@ -1,0 +1,18 @@
+@layout('layouts.main')
+
+@section('content')
+  <div class="container">
+    @each(post in posts)
+    <h3 class="mt-5 mb-4">{{post.id}}.{{post.title}}</h3>
+    <div>{{post.content}}</div>
+    <div class="text-muted mt-2">
+      <a href="/users/{{ post.user.id}}" class="text-muted">{{post.user.username}}
+    </a><span class="px-2">
+      <a href="#" class="text-muted">
+        <i class="fab fa-github"></i>
+      </a>
+    </span>
+    </div>
+    @endeach
+  </div>
+@endsection
