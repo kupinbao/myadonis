@@ -4,59 +4,54 @@
 
   <div class="container">
     <h3 class="mt-5 mb-4">添加post值</h3>
-    <form action="/posts" method="POST">
-      <div class="form-group">
-        <label for="title">数据库添加title数据</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="标题预设文字预设文字"
-          name="title">
-      </div>
-      <div class="form-group">
-        <label for="content">数据库添加Content数据</label>
-        <textarea
-          name="content"
-          rows="5" cols="10"
-          class="form-control"
-          placeholder="内容预设文字"></textarea>
-      </div>
-      <div class="form-group">
-        <span class="px-3 text-muted"><i class="fas fas-user"></i></span>
-        @each(user in users)
-          <div class="form-check form-check-inline">
-            <input type="radio"
-              name="user_id"
-              value="{{user.id}}"
-              id="user-{{user.id}}"
-              class="form-check-input">
-            <label for="user-{{user.id}}" class="form-check-label">
-              {{user.username}}
-            </label>
+    <form action="{{ route('PostController.store')}}" method="POST">
+      @!component('components.form.input',{
+        name:'title',
+        label:'标题',
+        placeholder:'输入标题内容',
+        getErrorFor,
+        hasErrorFor,
+        old
+      })
 
-          </div>
-        @endeach
-      </div>
-      <div class="form-group">
-        <span class="px-3 text-muted">
-          <i class="fas fa-tags"></i>
-        </span>
-        @each(tag in tags)
-        <div class="form-check form-check-inline">
-          <input type="checkbox"
-          name="tags" value="{{tag.id}}"
-          id="tag-{{tag.id}}" class="form-check-input">
-          <label for="tag-{{tag.id}}" class="form-check-label">
-            {{tag.title}}
-          </label>
+      @!component('components.form.textarea',{
+        name:'content',
+        label:'内容',
+        placeholder:'请输入内容',
+        getErrorFor,
+        hasErrorFor,
+        old
+      })
 
-        </div>
-        @endeach
-      </div>
-      {{csrfField()}}
-      <button type="submit" class="btn btn-primary">提交</button>
+    @component('components.form.radio-horizontal',{
+      name:'user_id',
+      items:users,
+      value:'id',
+      label:'username',
+      inline:true,
+      labelCol:1
+    })
+      @slot('label')
+        <span class='px-3 text-muted'><i class="fas fa-user"></i></span>
+      @endslot
+    @endcomponent
+
+    @component('components.form.radio-horizontal', {
+        type: 'checkbox',
+        name: 'tags',
+        items: tags,
+        value: 'id',
+        label: 'title',
+        inline: true,
+        labelCol: 1
+      })
+        @slot('label')
+            <span class="px-3 text-muted"><i class="fas fa-tags"></i></span>
+        @endslot
+      @endcomponent
+
+      {{ csrfField() }}
+      <button class="btn btn-primary" type="submit">Submit</button>
     </form>
-
   </div>
-
 @endsection

@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" >
-    {{ style ('https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css')}}
-    {{ style ('https://use.fontawesome.com/releases/v5.2.0/css/all.css')}}
-    {{ style ('main')}}
-    <title>学</title>
-  </head>
-  <body>
-    @!section('content')
-    {{ script ('https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js')  }}
-    {{ script ('https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js')  }}
-    {{ script ('https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js')  }}
-    {{ script ('https://use.fontawesome.com/releases/v5.2.0/css/all.css')}}
-    {{ script ('main')}}
-  </body>
-
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  {{ css('https://unpkg.com/bootstrap@4.0.0/dist/css/bootstrap.min.css') }}
+  {{ css('main') }}
+  <title>ninghao</title>
+</head>
+<body>
+  @!section('content')
+  {{ script('https://unpkg.com/jquery@3.3.1/dist/jquery.js') }}
+  {{ script('https://unpkg.com/bootstrap@4.0.0/dist/js/bootstrap.min.js') }}
+  {{ script('https://use.fontawesome.com/releases/v5.0.9/js/all.js') }}
+  {{ script('main') }}
+</body>
 </html>

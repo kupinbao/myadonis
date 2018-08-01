@@ -48,7 +48,7 @@ class UserController {
     const newUser = request.only(['username','email','password'])
     const user = await User.create(newUser)
 
-    return user
+    return response.redirect(`/users/${user.id}`)
   }
 
   /**
