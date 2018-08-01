@@ -1,3 +1,4 @@
+宁浩网学习adonis
 # Adonis fullstack application
 
 This is the fullstack boilerplate for AdonisJs, it comes pre-configured with.
