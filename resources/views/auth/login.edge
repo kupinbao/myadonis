@@ -1,0 +1,41 @@
+@layout('layouts.main')
+
+@section('content')
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <div class="card my-5">
+          <div class="card-body">
+      <h1 class="my-5 dispay-4">登录</h1>
+      <form action="{{ route('auth') }}" method="POST">
+        @!component('components.form.input',{
+          name:'username',
+          label:'用户名',
+          placeholder:'输入用户名',
+          getErrorFor,
+          hasErrorFor,
+          old
+        })
+
+        @!component('components.form.input',{
+          name:'password',
+          type:'password',
+          label:'密码',
+          placeholder:'输入密码',
+          getErrorFor,
+          hasErrorFor,
+          old
+        })
+
+        {{ csrfField() }}
+        <button class="btn btn-primary btn-block my-" type="submit">登录</button>
+      </form>
+      <p class="card-text">
+        <small class="text-muted">忘记密码了?<a href="{{route('signup')}}">找回密码</a></small>
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+  </div>
+@endsection
