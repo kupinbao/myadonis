@@ -26,7 +26,7 @@ class AuthController {
 
     await auth.attempt(username,password)
 
-    const user = await auth.gerUser()
+    const user = await auth.getUser()
 
     return response.route('UserController.show',{id:user.id})
   }
