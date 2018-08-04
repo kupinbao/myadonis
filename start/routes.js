@@ -24,6 +24,8 @@ Route.get('login','AuthController.login')
 Route.post('auth','AuthController.auth')
       .as('auth')
 
+Route.get('files/:id/download','FileController.download')
+      .as('files.download')
 
 Route.get('register','UserController.create')
       .as('signup')

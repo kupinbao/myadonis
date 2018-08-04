@@ -4,24 +4,29 @@
 @section('content')
 
 <div class="container">
-  <table class="table my-5">
-    <thead>
-      <tr>
-        <th>名称</th>
-        <th>类型</th>
-        <th>大小</th>
-      </tr>
-    </thead>
-    <tbody>
+  @if(flashMessage('message'))
+    @!component('components.alert', {
+      type: [flashMessage('type')],
+      message: [flashMessage('message')]
+    })
+  @endif
+<div class="row">
       @each(file in files)
-      <tr>
-        <td><a href="{{ route('files.show',{id:file.id})}}">{{file.client_name}}</a></td>
-        <td>{{file.type}}</td>
-        <td>{{file.size}}</td>
-      </tr>
+
+  <div class="col-md-4">
+      <div class="card-deck mb-3 text-center">
+        <div class="card mb-4 box-shadow">
+            <img src="/uploads/{{file.file_name}}" alt="Responsive image" class="img-thumbnail">
+              <div class="card-body">
+                <h4>{{file.type}}</h4>
+                <p class="card-text">{{file.size}}</p>
+            <p><a class="btn btn-primary" role="button" href="{{ route('files.show',{id:file.id})}}">详情</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
       @endeach
-    </tbody>
-  </table>
+
 
 </div>
 
