@@ -33,6 +33,9 @@ Route.get('register','UserController.create')
 Route.get('upload','FileController.create')
       .as('upload')
 
+Route.post('share/:type/:id/email','ShareController.email')
+      .as('share.email')
+
 Route.resource('files','FileController')
 
 Route.get('users/create',({ response}) => response.route('signup'))
