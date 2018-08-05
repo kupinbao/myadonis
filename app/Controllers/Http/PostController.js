@@ -10,16 +10,18 @@ const Route = use('Route')
 class PostController {
 
   async index ({ request, response, view }) {
+      const page = request.input('page')
+      const perPage=3
+
     const posts = await Post
       .query()
       .with('user',(builder)=>{
         builder.select('id','username')
       })
       .with('user.profile')
-      .fetch()
+      .paginate(page,perPage)
 
-    console.log(posts.toJSON())
-    return view.render('post.index',{posts:posts.toJSON()})
+    return view.render('post.index',{...posts.toJSON()})
   }
 
 
