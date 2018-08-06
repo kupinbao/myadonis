@@ -12,6 +12,10 @@ class User extends Model {
     return this.hasMany('App/Models/Post')
   }
 
+  user(){
+    return this.hasOne('App/Models/User')
+  }
+
   static boot () {
     super.boot()
 

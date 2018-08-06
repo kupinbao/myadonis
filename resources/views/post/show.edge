@@ -2,7 +2,19 @@
 
 @section('content')
 <div class="container">
+
   <h1 class="mt-5 mb-4">{{post.title}}</h1>
+
+  <a href="/users/{{ post.user_id}}" class="text-black-90">
+    <div class="list-group-item flex-column align-items-start py-3">
+    <div class=" justify-content-between">
+    <div><small class="text-black-50 ">作者：{{user.username}}</small></a></div>
+    <div><small class="text-black-50 ">邮箱：{{user.email}}</small></a></div>
+    <div><small class="text-black-50 ">发布时间：{{post.updated_at}}</small></a></div>
+</div>
+</div>
+  <div class="list-group-item flex-column align-items-start py-3">
+  <div class="justify-content-between">
   <div>
     <h3>
       {{post.content}}

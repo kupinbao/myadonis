@@ -31,7 +31,7 @@ class FileController {
     const _files = await File.all()
     const files =_files.toJSON()
 
-    return view.render('file.index',{files})
+    return view.render('file.index',{files,pageTitle:'图片'})
 
   }
 
